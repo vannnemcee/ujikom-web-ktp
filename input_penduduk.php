@@ -63,21 +63,10 @@
                 <input type="text" name="rw" placeholder="Masukkan RW"><br>
 
                 <label>Kecamatan:</label><br>
-                <select name="id_kecamatan">
-                    <option value="">- Pilih Kecamatan -</option>
-                    <?php
-                    $queri = "SELECT id_kecamatan, nama_kecamatan FROM kecamatan";
-                    $ambil = mysqli_query($koneksi, $queri);
-                    while ($data = mysqli_fetch_assoc($ambil)) {
-                    ?>
-                        <option value="<?php echo $data['id_kecamatan']; ?>">
-                            <?php echo $data['nama_kecamatan']; ?>
-                        </option>
-                    <?php
-                    }
-                    ?>
-                </select><br>
-                
+                <label>Kecamatan:</label><br>
+                <input type="text" name="kecamatan" placeholder="Masukkan nama kecamatan"><br>
+
+
                 <label>Kelurahan:</label><br>
                 <input type="text" name="kelurahan" placeholder="Masukkan nama kelurahan"><br>
 
@@ -135,7 +124,7 @@
             $ALAMAT_JALAN     = $_POST['alamat_jalan'];
             $RT               = $_POST['rt'];
             $RW               = $_POST['rw'];
-            $ID_KECAMATAN     = $_POST['id_kecamatan'];
+            $KECAMATAN = $_POST['kecamatan'];
             $KELURAHAN        = $_POST['kelurahan'];
             $ID_AGAMA         = $_POST['id_agama'];
             $PEKERJAAN        = $_POST['pekerjaan'];
@@ -143,8 +132,8 @@
             $KEWARGANEGARAAN  = $_POST['kewarganegaraan'];
             $MASA_BERLAKU     = "SEUMUR HIDUP";
 
-            $queri = "INSERT INTO penduduk (nik, nama_lengkap, tempat_lahir, tanggal_lahir, jenis_kelamin, gol_darah, alamat_jalan, rt, rw, id_kecamatan, kelurahan, id_agama, pekerjaan, status_perkawinan, kewarganegaraan, masa_berlaku)
-                        VALUES ('$NIK', '$NAMA_LENGKAP', '$TEMPAT_LAHIR', '$TGL_LAHIR', '$JENIS_KELAMIN', '$GOL_DARAH', '$ALAMAT_JALAN', '$RT', '$RW', '$ID_KECAMATAN', '$KELURAHAN', '$ID_AGAMA', '$PEKERJAAN', '$STATUS_PERKAWINAN', '$KEWARGANEGARAAN', '$MASA_BERLAKU')";
+            $queri = "INSERT INTO penduduk (nik, nama_lengkap, tempat_lahir, tanggal_lahir, jenis_kelamin, gol_darah, alamat_jalan, rt, rw, kecamatan, kelurahan, id_agama, pekerjaan, status_perkawinan, kewarganegaraan, masa_berlaku)
+                      VALUES ('$NIK', '$NAMA_LENGKAP', '$TEMPAT_LAHIR', '$TGL_LAHIR', '$JENIS_KELAMIN', '$GOL_DARAH', '$ALAMAT_JALAN', '$RT', '$RW', '$KECAMATAN', '$KELURAHAN', '$ID_AGAMA', '$PEKERJAAN', '$STATUS_PERKAWINAN', '$KEWARGANEGARAAN', '$MASA_BERLAKU')";
             $asup = mysqli_query($koneksi, $queri);
             if ($asup) {
                 echo "Data berhasil ditambahkan";
