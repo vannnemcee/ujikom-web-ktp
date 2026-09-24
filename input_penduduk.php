@@ -19,9 +19,13 @@
         <div class="topbar">
             <div class="brand">
                 <h1>Website Data Kependudukan</h1>
-                <p>Versi UI dengan CSS, belum terhubung database</p>
+                <p>Sistem Pengelolaan Data KTP</p>
             </div>
-            <nav class="navbar"><a href="index.html">Dashboard</a><a class="active" href="input_penduduk.php">Input Penduduk</a><a href="hasil_penduduk.php">Data Penduduk</a></nav>
+            <nav class="navbar">
+                <a href="index.php">Dashboard</a>
+                <a class="active" href="input_penduduk.php">Input Penduduk</a>
+                <a href="hasil_penduduk.php">Data Penduduk</a>
+            </nav>
         </div>
     </header>
     <main class="container">
@@ -61,7 +65,7 @@
 
                 <label>RW:</label><br>
                 <input type="text" name="rw" placeholder="Masukkan RW"><br>
-                
+
                 <label>Kecamatan:</label><br>
                 <input type="text" name="kecamatan" placeholder="Masukkan nama kecamatan"><br>
 
@@ -144,7 +148,6 @@
         }
         ?>
     </main>
-    <footer>KTP</footer>
+    <footer>Website KTP &copy; 2026</footer>
 </body>
-
 </html>

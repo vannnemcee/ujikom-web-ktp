@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,16 +13,15 @@
         <div class="topbar">
             <div class="brand">
                 <h1>Website Data Kependudukan</h1>
-                <p>Versi UI dengan CSS, terhubung database</p>
+                <p>Sistem Pengelolaan Data KTP</p>
             </div>
             <nav class="navbar">
-                <a class="active" href="index.html">Dashboard</a>
+                <a href="index.php">Dashboard</a>
                 <a href="input_penduduk.php">Input Penduduk</a>
-                <a href="hasil_penduduk.php">Data Penduduk</a>
+                <a class="active" href="hasil_penduduk.php">Data Penduduk</a>
             </nav>
         </div>
     </header>
-
     <table border="1">
         <tr>
             <th>No.</th>
@@ -79,14 +79,15 @@
                 <td><?php echo $data['kewarganegaraan']; ?></td>
                 <td><?php echo $data['masa_berlaku']; ?></td>
                 <td>
-                    <a href="update_penduduk.php?nik=<?php echo $data['nik']; ?>">Ubah</a> || 
+                    <a href="update_penduduk.php?nik=<?php echo $data['nik']; ?>">Ubah</a> ||
                     <a href="hapus_penduduk.php?nik=<?php echo $data['nik']; ?>" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
                 </td>
             </tr>
-        <?php 
+        <?php
             $i++;
-        } 
+        }
         ?>
     </table>
+    <footer>Website KTP &copy; 2026</footer>
 </body>
 </html>

@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubah Data Penduduk - UI CSS</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
     <header class="site-header">
         <div class="topbar">
             <div class="brand">
                 <h1>Website Data Kependudukan</h1>
-                <p>Versi UI dengan CSS, terhubung database</p>
+                <p>Sistem Pengelolaan Data KTP</p>
             </div>
             <nav class="navbar">
-                <a href="index.html">Dashboard</a>
-                <a href="input_penduduk.php">Input Penduduk</a>
-                <a class="active" href="hasil_penduduk.php">Data Penduduk</a>
+                <a href="index.php">Dashboard</a>
+                <a class="active" href="input_penduduk.php">Input Penduduk</a>
+                <a href="hasil_penduduk.php">Data Penduduk</a>
             </nav>
         </div>
     </header>
@@ -70,7 +72,7 @@
                    FROM penduduk 
                    LEFT JOIN kelurahan ON penduduk.id_kelurahan = kelurahan.id_kelurahan LEFT JOIN kecamatan ON kelurahan.id_kecamatan = kecamatan.id_kecamatan LEFT JOIN pekerjaan ON penduduk.id_pekerjaan = pekerjaan.id_pekerjaan
                    WHERE penduduk.nik = '$nik'";
-        
+
         $query = mysqli_query($koneksi, $tampil);
         $penduduk = mysqli_fetch_array($query);
         ?>
@@ -143,7 +145,7 @@
                             $q_agm = mysqli_query($koneksi, "SELECT * FROM agama");
                             while ($agm = mysqli_fetch_assoc($q_agm)) {
                                 $selected = ($agm['id_agama'] == $penduduk['id_agama']) ? "selected" : "";
-                                echo "<option value='".$agm['id_agama']."' $selected>".$agm['nama_agama']."</option>";
+                                echo "<option value='" . $agm['id_agama'] . "' $selected>" . $agm['nama_agama'] . "</option>";
                             }
                             ?>
                         </select>
@@ -180,5 +182,6 @@
             </table>
         </form>
     </main>
+    <footer>Website KTP &copy; 2026</footer>
 </body>
 </html>
