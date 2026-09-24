@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Pekerja</title>
+    <title>Input Penduduk</title>
     <link rel="stylesheet" href="assets/style.css">
 
 </head>
@@ -16,54 +16,53 @@
 
     ?>
     <header class="site-header"><div class="topbar">
-            <div class="brand"><h1>Perpustakaan XI</h1><p>Versi UI dengan CSS, belum terhubung database</p></div>
-            <nav class="navbar"><a href="index.html">Dashboard</a><a href="input_data_kategori_buku.php">Kategori</a><a href="input_buku.php">Buku</a><a class="active" href="input_peminjaman_buku.php">Peminjaman</a></nav>
+            <div class="brand"><h1>Website Data Kependudukan</h1><p>Versi UI dengan CSS, belum terhubung database</p></div>
+            <nav class="navbar"><a href="index.html">Dashboard</a><a class="active" href="input_penduduk.php">Input Penduduk</a><a href="hasil_penduduk.php">Data Penduduk</a></nav>
         </div></header>
     <main class="container">
-    <h2>Input Peminjaman</h2>
-    <FORM method="POST" action="#">
+    <h2>Input Penduduk</h2>
+    <FORM method="POST" action="hasil_penduduk.php">
         <article class="stat-card">
-                <input type="hidden" name="id_peminjaman" width="10">
+                <label>NIK:</label><br>
+                <input type="text" name="nik" width="10" placeholder="Masukkan NIK"><br>
 
-                <label>Buku:</label><br>
-                    <select name="id_buku">
-                        <option value="">- Pilih Buku -</option>
-                        <?php
-                        $queri = "SELECT id_buku, judul
-                                  from buku";
-                        $ambil = mysqli_query($koneksi, $queri);
-                        while ($data = mysqli_fetch_assoc($ambil)) {
-                        ?>
-                            <option value="<?php echo $data['id_buku']; ?>"><?php echo $data['judul'] ?></option>
-                        <?php
-                        }
-                        ?>
-                    </select>
-                <label>NIS:</label><br>
-                <input type="text" name="nis" width="10"><br>
+                <label>Nama Lengkap:</label></br>
+                <input type="text" name="nama_lengkap" placeholder="Masukkan Nama"><br>
 
-                <label>Nama Peminjam:</label></br>
-                <input type="text" name="nama_peminjam"><br>
+                <label>Tempat Lahir:</label><br>
+                <input type="text" name="tempat_lahir" placeholder="Contoh : Bandung" width="10"><br>
 
-                <label>Kelas:</label><br>
-                <input type="text" name="kelas" placeholder="XI PPLG 1" width="10"><br>
-
-                <label>Tanggal Peminjaman:</label><br>
+                <label>Tanggal Lahir:</label><br>
                 <input type="date" name="tgl_pinjam" width="10"><br>
 
-                <label>Kembali:</label><br>
-                <input type="date" name="tgl_kembali" width="10"><br>
+                <label>Jenis Kelamin:</label>
+                <input type="radio" name="jenis_kelamin" value="LAKI-LAKI">LAKI-LAKI<br>
+                <input type="radio" name="jenis_kelamin" value="PEREMPUAN">PEREMPUAN<br>
 
-                <label>Status:</label><br>
-                    <select name="status">
-                        <option value="Dipinjam">Dipinjam</option>
-                        <option value="Dikembalikan">Dikembalikan</option>
-                        <option value="Terlambat">Terlambat</option>
+                <label>Golongan Darah:</label><br>
+                    <select name="gol_darah">
+                        <option value="">- Pilih Golongan Darah -</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="O">O</option>
                     </select>
 
-                <label>Catatan:</label><br>
-                <textarea name="catatan" cols="50"></textarea>
+                <label>Alamat Jalan:</label><br>
+                <input type="text" name="alamat_jalan" placeholder="Masukkan RT">
 
+                <label>RT:</label><br>
+                <input type="text" name="rt" placeholder="Masukkan RT">
+
+                <label>RW:</label><br>
+                <input type="text" name="rw" placeholder="Masukkan RW">
+                
+                <label>Status Perkawinana:</label><br>
+                <select name="status_perkawinan">
+                    <option value="BELUM KAWIN">BELUM KAWIN</option>
+                    <option value="KAWIN">KAWIN</option>
+                </select><br>
+                
                 <input type="submit" name="simpan" value="Simpan">
                 <input type="reset" value="Kosongkan">
         </article>
@@ -97,48 +96,8 @@
         echo "Silahkan untuk menginput untuk menambahkan data";
     }
     ?>
-    <table border="1" cellpadding="5">
-        <tr align="center">
-            <th>No.</th>
-            <th>NIS</th>
-            <th>Nama</th>
-            <th>Kelas</th>
-            <th>Buku</th>
-            <th>Tanggal Pinjam</th>
-            <th>Kembali</th>
-            <th>Status</th>
-            <th>Aksi</th>
-        </tr>
-        <?php
-        $n = 1;
-        $queri = "SELECT peminjaman.*, buku.judul FROM peminjaman JOIN buku ON peminjaman.id_buku = buku.id_buku";
-        $hasil = mysqli_query($koneksi, $queri);
-        if (!$hasil) {
-            die("eror :" . mysqli_connect_error());
-        }
-        while ($datanya = mysqli_fetch_assoc($hasil)) {
-
-        ?>
-            <tr>
-                <td><?php echo $n++; ?></td>
-                <td><?php echo $datanya['nis']; ?></td>
-                <td><?php echo $datanya['nama_peminjam']; ?></td>
-                <td><?php echo $datanya['kelas']; ?></td>
-                <td><?php echo $datanya['judul']; ?></td>
-                <td><?php echo $datanya['tanggal_pinjam']; ?></td>
-                <td><?php echo $datanya['tanggal_kembali']; ?></td>
-                <td><?php echo $datanya['status']; ?></td>
-                <td>
-                    <a href="update_peminjaman_buku.php?id=<?php echo $datanya['id_peminjaman']; ?>">Ubah</a> |
-                    <a href="hapus_peminjaman_buku.php?id=<?php echo $datanya['id_peminjaman']; ?>">Hapus</a>
-                </td>
-            </tr>
-        <?php
-        }
-        ?>
-    </table>
 </main>
-        <footer>Perpustakaan Web Kelas XI - Evan Angga Subagja</footer>
+        <footer>KTP</footer>
 </body>
 
 </html>
