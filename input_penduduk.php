@@ -61,8 +61,7 @@
 
                 <label>RW:</label><br>
                 <input type="text" name="rw" placeholder="Masukkan RW"><br>
-
-                <label>Kecamatan:</label><br>
+                
                 <label>Kecamatan:</label><br>
                 <input type="text" name="kecamatan" placeholder="Masukkan nama kecamatan"><br>
 
