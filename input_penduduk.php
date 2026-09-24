@@ -51,16 +51,80 @@
                     <option value="B">B</option>
                     <option value="AB">AB</option>
                     <option value="O">O</option>
-                </select>
+                </select><br>
 
                 <label>Alamat Jalan:</label><br>
-                <input type="text" name="alamat_jalan" placeholder="JL. Saranjana">
+                <input type="text" name="alamat_jalan" placeholder="JL. Saranjana"><br>
 
                 <label>RT:</label><br>
-                <input type="text" name="rt" placeholder="Masukkan RT">
+                <input type="text" name="rt" placeholder="Masukkan RT"><br>
 
                 <label>RW:</label><br>
-                <input type="text" name="rw" placeholder="Masukkan RW">
+                <input type="text" name="rw" placeholder="Masukkan RW"><br>
+
+                <label>Kecamatan:</label><br>
+                <select name="id_kecamatan">
+                    <option value="">- Pilih Kecamatan -</option>
+                    <?php
+                    $queri = "SELECT id_kecamatan, nama_kecamatan FROM kecamatan";
+                    $ambil = mysqli_query($koneksi, $queri);
+                    while ($data = mysqli_fetch_assoc($ambil)) {
+                    ?>
+                        <option value="<?php echo $data['id_kecamatan']; ?>">
+                            <?php echo $data['nama_kecamatan']; ?>
+                        </option>
+                    <?php
+                    }
+                    ?>
+                </select><br>
+
+                <label>Kelurahan:</label><br>
+                <select name="id_kelurahan">
+                    <option value="">- Pilih Kelurahan -</option>
+                    <?php
+                    $queri = "SELECT id_kelurahan, nama_kelurahan FROM kelurahan";
+                    $ambil = mysqli_query($koneksi, $queri);
+                    while ($data = mysqli_fetch_assoc($ambil)) {
+                    ?>
+                        <option value="<?php echo $data['id_kelurahan']; ?>">
+                            <?php echo $data['nama_kelurahan']; ?>
+                        </option>
+                    <?php
+                    }
+                    ?>
+                </select><br>
+
+                <label>Agama:</label><br>
+                <select name="id_agama">
+                    <option value="">- Pilih Agama -</option>
+                    <?php
+                    $queri = "SELECT id_agama, nama_agama FROM agama";
+                    $ambil = mysqli_query($koneksi, $queri);
+                    while ($data = mysqli_fetch_assoc($ambil)) {
+                    ?>
+                        <option value="<?php echo $data['id_agama']; ?>">
+                            <?php echo $data['nama_agama']; ?>
+                        </option>
+                    <?php
+                    }
+                    ?>
+                </select><br>
+
+                <label>Pekerjaan:</label><br>
+                <select name="id_pekerjaan">
+                    <option value="">- Pilih Pekerjaan -</option>
+                    <?php
+                    $queri = "SELECT id_pekerjaan, nama_pekerjaan FROM pekerjaan";
+                    $ambil = mysqli_query($koneksi, $queri);
+                    while ($data = mysqli_fetch_assoc($ambil)) {
+                    ?>
+                        <option value="<?php echo $data['id_pekerjaan']; ?>">
+                            <?php echo $data['nama_pekerjaan']; ?>
+                        </option>
+                    <?php
+                    }
+                    ?>
+                </select><br>
 
                 <label>Status Perkawinana:</label><br>
                 <select name="status_perkawinan">
@@ -74,6 +138,8 @@
                     <option value="WNA">WNA</option>
                 </select><br>
 
+                <label>Masa Berlaku:</label><br>
+                <input type="text" name="masa_berlaku" value="SEUMUR HIDUP" readonly><br>
 
                 <input type="submit" name="simpan" value="Simpan">
                 <input type="reset" value="Kosongkan">
@@ -86,20 +152,25 @@
         <?php
 
         if (isset($_POST['simpan'])) {
-            $NIK            = $_POST['nik'];
-            $NAMA_LENGKAP   = $_POST['nama_lengkap'];
-            $TEMPAT_LAHIR   = $_POST['tempat_lahir'];
-            $TGL_LAHIR      = $_POST['tanggal_lahir'];
-            $JENIS_KELAMIN  = $_POST['jenis_kelamin'];
-            $GOL_DARAH      = $_POST['gol_darah'];
-            $ALAMAT_JALAN   = $_POST['alamat_jalan'];
-            $RT             = $_POST['rt'];
-            $RW             = $_POST['rw'];
+            $NIK              = $_POST['nik'];
+            $NAMA_LENGKAP     = $_POST['nama_lengkap'];
+            $TEMPAT_LAHIR     = $_POST['tempat_lahir'];
+            $TGL_LAHIR        = $_POST['tanggal_lahir'];
+            $JENIS_KELAMIN    = $_POST['jenis_kelamin'];
+            $GOL_DARAH        = $_POST['gol_darah'];
+            $ALAMAT_JALAN     = $_POST['alamat_jalan'];
+            $RT               = $_POST['rt'];
+            $RW               = $_POST['rw'];
+            $ID_KECAMATAN     = $_POST['id_kecamatan'];
+            $ID_KELURAHAN     = $_POST['id_kelurahan'];
+            $ID_AGAMA         = $_POST['id_agama'];
+            $ID_PEKERJAAN     = $_POST['id_pekerjaan'];
             $STATUS_PERKAWINAN = $_POST['status_perkawinan'];
-            $KEWARGANEGARAAN = $_POST['kewarganegaraan'];
+            $KEWARGANEGARAAN  = $_POST['kewarganegaraan'];
+            $MASA_BERLAKU     = "SEUMUR HIDUP";
 
-            $queri = "INSERT INTO penduduk (nik, nama_lengkap, tempat_lahir, tanggal_lahir, jenis_kelamin, gol_darah, alamat_jalan, rt, rw, status_perkawinan, kewarganegaraan)
-              VALUES ('$NIK', '$NAMA_LENGKAP', '$TEMPAT_LAHIR', '$TGL_LAHIR', '$JENIS_KELAMIN', '$GOL_DARAH', '$ALAMAT_JALAN', '$RT', '$RW', '$STATUS_PERKAWINAN', '$KEWARGANEGARAAN')";
+            $queri = "INSERT INTO penduduk (nik, nama_lengkap, tempat_lahir, tanggal_lahir, jenis_kelamin, gol_darah, alamat_jalan, rt, rw, id_kecamatan, id_kelurahan, id_agama, id_pekerjaan, status_perkawinan, kewarganegaraan, masa_berlaku)
+              VALUES ('$NIK', '$NAMA_LENGKAP', '$TEMPAT_LAHIR', '$TGL_LAHIR', '$JENIS_KELAMIN', '$GOL_DARAH', '$ALAMAT_JALAN', '$RT', '$RW', '$ID_KECAMATAN', '$ID_KELURAHAN', '$ID_AGAMA', '$ID_PEKERJAAN', '$STATUS_PERKAWINAN', '$KEWARGANEGARAAN', '$MASA_BERLAKU')";
             $asup = mysqli_query($koneksi, $queri);
             if ($asup) {
                 echo "Data berhasil ditambahkan";
@@ -107,7 +178,7 @@
                 die("koneksi eror:" . mysqli_error($koneksi));
             }
         } else {
-            echo "Silahkan untuk menginput untuk menambahkan data";
+            echo "Silahkan untuk menginput untuk menambahkan data KTP anda";
         }
         ?>
     </main>
