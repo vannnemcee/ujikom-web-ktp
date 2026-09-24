@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard KTP - UI CSS</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <header class="site-header"><div class="topbar">
+            <div class="brand"><h1>WEB KTP</h1><p>Versi UI dengan CSS, belum terhubung database</p></div>
+            <nav class="navbar"><a class="active" href="index.html">Dashboard</a><a href="input_agama.php">Agama</a><a href="input_kecamatan.php">Kecamatan</a><a href="input_kelurahan.php">Kelurahan</a><a href="input_pekerja.php">Pekerja</a><a href="input_penduduk.php">Penduduk</a></nav>
+        </div></header>
+        <main class="container">
+            <div class="page-heading"><div><h2>Dashboard</h2><p>Ringkasan data perpustakaan.</p></div></div>
+            <section class="stats">
+                <article class="stat-card"><strong>5</strong><span>Kategori</span></article>
+                <article class="stat-card"><strong>12</strong><span>Buku</span></article>
+                <article class="stat-card"><strong>10</strong><span>Peminjaman</span></article>
+            </section>
+            <section class="dashboard-grid">
+                <a class="panel menu-card" href="input_data_kategori_buku.php"><span>01</span><h3>Kelola Kategori</h3><p>Input dan tampil data kategori.</p></a>
+                <a class="panel menu-card" href="input_buku.php"><span>02</span><h3>Kelola Buku</h3><p>Input buku beserta kategorinya.</p></a>
+                <a class="panel menu-card" href="input_peminjaman_buku.php"><span>03</span><h3>Kelola Peminjaman</h3><p>Catat transaksi peminjaman buku.</p></a>
+            </section>
+            <p class="note">Contoh Penggunaaan CSS</p>
+        </main>
+        <footer>KTP</footer>
+</body>
+
+</html>
