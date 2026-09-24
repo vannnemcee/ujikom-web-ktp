@@ -17,8 +17,8 @@
             </div>
             <nav class="navbar">
                 <a href="index.php">Dashboard</a>
-                <a class="active" href="input_penduduk.php">Input Penduduk</a>
-                <a href="hasil_penduduk.php">Data Penduduk</a>
+                <a href="input_penduduk.php">Input Penduduk</a>
+                <a class="active" href="hasil_penduduk.php">Data Penduduk</a>
             </nav>
         </div>
     </header>
