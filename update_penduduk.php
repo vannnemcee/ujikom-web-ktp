@@ -178,8 +178,6 @@
                             <select name="status_perkawinan">
                                 <option value="BELUM KAWIN" <?php echo ($penduduk['status_perkawinan'] == 'BELUM KAWIN') ? 'selected' : ''; ?>>BELUM KAWIN</option>
                                 <option value="KAWIN" <?php echo ($penduduk['status_perkawinan'] == 'KAWIN') ? 'selected' : ''; ?>>KAWIN</option>
-                                <option value="CERAI HIDUP" <?php echo ($penduduk['status_perkawinan'] == 'CERAI HIDUP') ? 'selected' : ''; ?>>CERAI HIDUP</option>
-                                <option value="CERAI MATI" <?php echo ($penduduk['status_perkawinan'] == 'CERAI MATI') ? 'selected' : ''; ?>>CERAI MATI</option>
                             </select>
                         </td>
                     </tr>
