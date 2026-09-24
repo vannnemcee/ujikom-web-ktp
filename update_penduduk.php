@@ -38,9 +38,7 @@
             $alamat_jalan      = $_POST['alamat_jalan'];
             $rt                = $_POST['rt'];
             $rw                = $_POST['rw'];
-            $id_kelurahan      = $_POST['id_kelurahan'];
             $id_agama          = $_POST['id_agama'];
-            $id_pekerjaan      = $_POST['id_pekerjaan'];
             $status_perkawinan = $_POST['status_perkawinan'];
             $kewarganegaraan   = $_POST['kewarganegaraan'];
             $masa_berlaku      = $_POST['masa_berlaku'];
@@ -54,9 +52,7 @@
                                 alamat_jalan      = '$alamat_jalan', 
                                 rt                = '$rt', 
                                 rw                = '$rw', 
-                                id_kelurahan      = '$id_kelurahan', 
                                 id_agama          = '$id_agama', 
-                                id_pekerjaan      = '$id_pekerjaan', 
                                 status_perkawinan = '$status_perkawinan', 
                                 kewarganegaraan   = '$kewarganegaraan', 
                                 masa_berlaku      = '$masa_berlaku' 
@@ -70,8 +66,7 @@
                 echo '<script>alert("Ubah data gagal!");</script>';
             }
         }
-        $tampil = "SELECT penduduk.*, kelurahan.nama_kelurahan, kecamatan.nama_kecamatan,
-                          pekerjaan.nama_pekerjaan
+        $tampil = "SELECT penduduk.*,  kelurahan.nama_kelurahan,  kecamatan.nama_kecamatan, pekerjaan.nama_pekerjaan
                    FROM penduduk 
                    LEFT JOIN kelurahan ON penduduk.id_kelurahan = kelurahan.id_kelurahan LEFT JOIN kecamatan ON kelurahan.id_kecamatan = kecamatan.id_kecamatan LEFT JOIN pekerjaan ON penduduk.id_pekerjaan = pekerjaan.id_pekerjaan
                    WHERE penduduk.nik = '$nik'";
@@ -133,7 +128,7 @@
                 </tr>
                 <tr>
                     <td>Kelurahan / Desa</td>
-                    <td><input type="text" name="id_kelurahan" value="<?php echo isset($penduduk['nama_kelurahan']) ? $penduduk['nama_kelurahan'] : $penduduk['id_kelurahan']; ?>" required></td>
+                    <td><input type="text" name="kelurahan" value="<?php echo isset($penduduk['nama_kelurahan']) ? $penduduk['nama_kelurahan'] : ''; ?>" required></td>
                 </tr>
                 <tr>
                     <td>Kecamatan</td>
@@ -156,7 +151,7 @@
                 </tr>
                 <tr>
                     <td>Pekerjaan</td>
-                    <td><input type="text" name="id_pekerjaan" value="<?php echo isset($penduduk['nama_pekerjaan']) ? $penduduk['nama_pekerjaan'] : $penduduk['id_pekerjaan']; ?>" required></td>
+                    <td><input type="text" name="pekerjaan" value="<?php echo isset($penduduk['nama_pekerjaan']) ? $penduduk['nama_pekerjaan'] : ''; ?>" required></td>
                 </tr>
                 <tr>
                     <td>Status Perkawinan</td>
